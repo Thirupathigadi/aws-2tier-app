@@ -8,7 +8,7 @@ from rds import create_db_sg, create_rds
 def main():
 
     print("\n=== STEP 1: VPC & Subnets ===")
-    vpc_id, pub_subnet_id, priv_subnet_id = create_vpc_and_subnets()
+    vpc_id, pub_subnet_id, priv_subnet_ids = create_vpc_and_subnets()
 
     print("\n=== STEP 2: Security Groups ===")
     web_sg_id = create_web_sg(vpc_id)
