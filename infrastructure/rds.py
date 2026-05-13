@@ -42,7 +42,7 @@ def create_rds(priv_subnet_ids, db_sg_id):
         print("Subnet group already exists")
 
     rds.create_db_instance(
-        DBInstanceIdentifier='2tier-db',
+        DBInstanceIdentifier='tier-db',
         DBInstanceClass='db.t3.micro',
         Engine='mysql',
         MasterUsername='admin',
