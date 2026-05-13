@@ -15,9 +15,10 @@ def create_db_sg(vpc_id, web_sg_id):
 def create_rds(pub_subnet_id, priv_subnet_id, db_sg_id):
     rds = boto3.client('rds')
     rds.create_db_subnet_group(
-        DBSubnetGroupName='2tier-db-subnet',
-        DBSubnetGroupDescription='RDS private subnets',
-        SubnetIds=[pub_subnet_id, priv_subnet_id]
+    DBSubnetGroupName='2tier-db-subnet',
+    DBSubnetGroupDescription='RDS private subnets',
+    SubnetIds=[priv_subnet_id]
+
     )
     rds.create_db_instance(
         DBInstanceIdentifier='2tier-db',
