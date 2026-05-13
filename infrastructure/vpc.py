@@ -18,10 +18,17 @@ def create_vpc_and_subnets():
     pub_subnet_id = pub_subnet['Subnet']['SubnetId']
     ec2.modify_subnet_attribute(SubnetId=pub_subnet_id,
                                 MapPublicIpOnLaunch={'Value': True})
+priv_subnet_1 = ec2.create_subnet(
+    VpcId=vpc_id,
+    CidrBlock='10.0.2.0/24',
+    AvailabilityZone='ap-south-1a'
+)['Subnet']['SubnetId']
 
-    priv_subnet = ec2.create_subnet(VpcId=vpc_id, CidrBlock='10.0.2.0/24',
-                                    AvailabilityZone='ap-south-1b')
-    priv_subnet_id = priv_subnet['Subnet']['SubnetId']
+priv_subnet_2 = ec2.create_subnet(
+    VpcId=vpc_id,
+    CidrBlock='10.0.3.0/24',
+    AvailabilityZone='ap-south-1b'
+)['Subnet']['SubnetId']
 
     rt = ec2.create_route_table(VpcId=vpc_id)
     rt_id = rt['RouteTable']['RouteTableId']
