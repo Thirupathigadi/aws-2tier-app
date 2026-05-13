@@ -35,15 +35,15 @@ def create_rds(priv_subnet_id, db_sg_id):
 
     # Create DB subnet group safely
     try:
-        rds.create_db_subnet_group(
-            DBSubnetGroupName=subnet_group_name,
-            DBSubnetGroupDescription='RDS private subnets',
-            SubnetIds=[priv_subnet_id]
-        )
-        print("DB Subnet Group created")
+    rds.create_db_subnet_group(
+        DBSubnetGroupName=subnet_group_name,
+        DBSubnetGroupDescription='RDS private subnets',
+        SubnetIds=[priv_subnet_id]
+    )
+    print("DB Subnet Group created")
 
-    except rds.exceptions.DBSubnetGroupAlreadyExistsFault:
-        print("DB Subnet Group already exists, skipping creation")
+except rds.exceptions.DBSubnetGroupAlreadyExistsFault:
+    print("DB Subnet Group already exists")
 
     # Check if DB already exists (important fix)
     try:
