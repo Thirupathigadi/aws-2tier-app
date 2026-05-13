@@ -36,7 +36,7 @@ def create_db_sg(vpc_id, web_sg_id):
 def create_rds(priv_subnet_id, db_sg_id):
 
     rds = boto3.client('rds')
-    subnet_group_name = '2tier-db-subnet'.strip()
+    subnet_group_name = 'my-db-subnet'
 
     # Create subnet group
     try:
