@@ -3,7 +3,7 @@ import boto3
 # ----------------------------
 # SECURITY GROUP FOR DB
 # ----------------------------
-def create_db_sg(vpc_id, web_sg_id):
+def create_rds(priv_subnet_ids, db_sg_id)::
     ec2 = boto3.client('ec2')
 
     sg = ec2.create_security_group(
