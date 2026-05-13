@@ -45,7 +45,7 @@ def create_rds(priv_subnet_ids, db_sg_id):
 
     # Create DB instance
     rds.create_db_instance(
-        DBInstanceIdentifier='tier-db',
+        DBInstanceIdentifier='my-db',
         DBInstanceClass='db.t3.micro',
         Engine='mysql',
         MasterUsername='admin',
