@@ -43,7 +43,7 @@ def create_rds(priv_subnet_id, db_sg_id):
         rds.create_db_subnet_group(
             DBSubnetGroupName=subnet_group_name,
             DBSubnetGroupDescription='RDS private subnets',
-            SubnetIds=[priv_subnet_id]
+            SubnetIds=priv_subnet_ids
         )
         print("DB Subnet Group created")
 
