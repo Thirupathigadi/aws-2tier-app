@@ -3,7 +3,7 @@ import boto3
 # ----------------------------
 # SECURITY GROUP FOR DB
 # ----------------------------
-def create_rds(priv_subnet_ids, db_sg_id):
+def create_db_sg(vpc_id, web_sg_id):
     ec2 = boto3.client('ec2')
 
     sg = ec2.create_security_group(
@@ -20,15 +20,12 @@ def create_rds(priv_subnet_ids, db_sg_id):
             'IpProtocol': 'tcp',
             'FromPort': 3306,
             'ToPort': 3306,
-            'UserIdGroupPairs': [
-                {'GroupId': web_sg_id}
-            ]
+            'UserIdGroupPairs': [{'GroupId': web_sg_id}]
         }]
     )
 
     print(f"DB SG created: {sg_id}")
     return sg_id
-
 
 # ----------------------------
 # RDS CREATION
